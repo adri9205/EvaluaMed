@@ -1,5 +1,8 @@
 package com.example.evaluamed;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,6 +16,12 @@ public class Evaluacion_Alumno extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_evaluacion__alumno);
 		ListView preguntas=(ListView) findViewById(R.id.list2);
+		Calendar c = Calendar.getInstance();
+		//System.out.println("Current time => " + c.getTime());
+
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String formattedDate = df.format(c.getTime());
+		//System.out.println("Current time2 => " + formattedDate);
 	}
 
 	@Override

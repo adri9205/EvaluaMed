@@ -17,7 +17,7 @@
      android:layout_below="@+id/searchView1" >
 
     </ListView>
-    <SearchView
+    <EditText
         android:id="@+id/searchView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,8 +25,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="46dp" >
-
-    </SearchView>
+<requestFocus />
+    </EditText>
 
      
 

@@ -14,39 +14,98 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class Evaluacion extends Activity {
-
+	List<String> array;
+	ListViewAdapter miAdaptador;
+	Libro libro;
+	ListView alumnos;
+	List<Libro> listLibros= new ArrayList<Libro>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_evaluacion);
-		SearchView busca=(SearchView) findViewById(R.id.searchView1);
-		ListView alumnos=(ListView) findViewById(R.id.list1);
+		//SearchView busca=(SearchView) findViewById(R.id.searchView1);
+		EditText ed=(EditText)findViewById(R.id.searchView1);
+		alumnos=(ListView) findViewById(R.id.list1);
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
- 
-	final ListViewAdapter miAdaptador= new ListViewAdapter(getApplicationContext(), R.layout.row1,getDataForListView());
+        miAdaptador= new ListViewAdapter(getApplicationContext(), R.layout.row1,getDataForListView());
 	
 	alumnos.setAdapter(miAdaptador);
 	
-	
+	  ed.addTextChangedListener(new TextWatcher() {
+		   
+		   @Override
+		   public void onTextChanged(CharSequence s, int start, int before, int count) {
+			   int textlength = s.length();
+				List<Libro> listtemp= new ArrayList<Libro>();
+				for(Libro c: listLibros){
+					 if ((textlength <= c.getTitulo().length())||(textlength <= c.getIsbn().length())
+							 ||(textlength <= c.getFecha_publicacion().length())
+							 ||(textlength <= c.getYear().length())
+							 ||(textlength <= c.getEsp().length())
+							 ) {
+		                 if ((c.getTitulo().toLowerCase().contains(s.toString().toLowerCase())
+		                		 )||(c.getIsbn().toLowerCase().contains(s.toString().toLowerCase()))
+		                				 ||(c.getFecha_publicacion().toLowerCase().contains(s.toString().toLowerCase())
+		                						 )||(c.getEsp().toLowerCase().contains(s.toString().toLowerCase()))
+		                						 ||(c.getYear().toLowerCase().contains(s.toString().toLowerCase()))
+		                		 ) {
+		                    listtemp.add(c);
+		                 }
+				}
+					 }
+		    	miAdaptador= new ListViewAdapter(getApplicationContext(),R.layout.row1,listtemp);
+		    	
+		    	alumnos.setAdapter(miAdaptador);
+		    //Evaluacion.this.miAdaptador.getFilter().filter(s);
+			   /* @Override
+    public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+           int textlength = cs.length();
+           ArrayList<ContactStock> tempArrayList = new ArrayList<ContactStock>();
+           for(ContactStock c: arraylist){
+              if (textlength <= c.getName().length()) {
+                 if (c.getName().toLowerCase().contains(cs.toString().toLowerCase())) {
+                    tempArrayList.add(c);
+                 }
+              }
+           }
+           mAdapter = new ContactListAdapter(activity, tempArrayList);
+           lv.setAdapter(mAdapter);
+     }*/
+		    
+		   }
+		   
+		   @Override
+		   public void beforeTextChanged(CharSequence s, int start, int count,
+		     int after) {
+		    // TODO Auto-generated method stub
+		    
+		   }
+		   
+		   @Override
+		   public void afterTextChanged(Editable s) {
+		    // TODO Auto-generated method stub
+		    
+		   }
+		  });
 	OnItemClickListener registro = new OnItemClickListener(){
 
 		@Override
@@ -69,14 +128,8 @@ public class Evaluacion extends Activity {
 	
 	public List<Libro> getDataForListView(){
 		
-		Libro libro;
-		List<Libro> listLibros= new ArrayList<Libro>();/*
-		libro= new Libro("ios programming cookbook", "9780470918029","23/01/2010");
-		listLibros.add(libro);
-		libro= new Libro("Beginning ios 4 Application Development", "9781479211418","10/08/2011");
-		listLibros.add(libro);
-		libro= new Libro("ios 7 Application Development in 24 Hours", "9781449372422","25/03/2014");
-		listLibros.add(libro);*/
+		
+	
 	
 		      String data;
 		      List<String> r = new ArrayList<String>();
@@ -122,7 +175,6 @@ public class Evaluacion extends Activity {
 		    
 		return listLibros;
 	}
-	
 	
 
 	@Override

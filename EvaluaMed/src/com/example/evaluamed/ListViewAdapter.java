@@ -24,6 +24,8 @@ public class ListViewAdapter extends ArrayAdapter<Libro> {
 		this.layoutResourceId=resource;
 	}
 	
+	
+
 	public View getView(int position, View convertView, ViewGroup parent){
 		View row =convertView;
 		
@@ -33,23 +35,23 @@ public class ListViewAdapter extends ArrayAdapter<Libro> {
 		}
 		
 		TextView titulo=(TextView)row.findViewById(R.id.textView1);
-		TextView isbn=(TextView)row.findViewById(R.id.textView5);
-		TextView fecha_publicacion=(TextView)row.findViewById(R.id.textView7);
+		//TextView isbn=(TextView)row.findViewById(R.id.textView5);
+		//TextView fecha_publicacion=(TextView)row.findViewById(R.id.textView7);
 		//3 año  y 2especialidad
-		TextView especialidad=(TextView)row.findViewById(R.id.textView2);
-		TextView year=(TextView)row.findViewById(R.id.textView3);
+		//TextView especialidad=(TextView)row.findViewById(R.id.textView2);
+		//TextView year=(TextView)row.findViewById(R.id.textView3);
 		
 		titulo.setTextColor(Color.rgb(0,0,0));
-		isbn.setTextColor(Color.rgb(0,0,0));
-		fecha_publicacion.setTextColor(Color.rgb(0,0,0));
-		year.setTextColor(Color.rgb(0,0,0));
-		especialidad.setTextColor(Color.rgb(0,0,0));
+		//isbn.setTextColor(Color.rgb(0,0,0));
+		//fecha_publicacion.setTextColor(Color.rgb(0,0,0));
+		//year.setTextColor(Color.rgb(0,0,0));
+		//especialidad.setTextColor(Color.rgb(0,0,0));
 		Libro libro=listaLibros.get(position);
-		titulo.setText(libro.getTitulo());
-		isbn.setText(libro.getIsbn());
-		fecha_publicacion.setText(libro.getFecha_publicacion());
-		especialidad.setText(libro.getEsp());
-		year.setText(libro.getYear());
+		titulo.setText(libro.getTitulo()+" "+libro.getIsbn()+" "+libro.getFecha_publicacion()+"\n"+libro.getEsp()+" "+libro.getYear());
+		//isbn.setText(libro.getIsbn());
+		//fecha_publicacion.setText(libro.getFecha_publicacion());
+		//especialidad.setText(libro.getEsp());
+		//year.setText(libro.getYear());
 		
 		
 		

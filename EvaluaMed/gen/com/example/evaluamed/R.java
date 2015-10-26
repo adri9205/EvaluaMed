@@ -69,6 +69,7 @@ public final class R {
         public static final int activity_olvido=0x7f030004;
         public static final int row=0x7f030005;
         public static final int row1=0x7f030006;
+        public static final int rowsearch=0x7f030007;
     }
     public static final class menu {
         public static final int evaluacion=0x7f070000;

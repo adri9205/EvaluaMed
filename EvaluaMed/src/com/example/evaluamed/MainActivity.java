@@ -77,7 +77,6 @@ public class MainActivity extends Activity {
 		login.setOnClickListener(new View.OnClickListener(){
        
         	public void onClick(View view){
-        		 
         		//Extreamos datos de los EditText
         		String usuario=user.getText().toString();
         		String passw=pass.getText().toString();
@@ -94,9 +93,10 @@ public class MainActivity extends Activity {
         			//si detecto un error en la primera validacion vibrar y mostrar un Toast con un mensaje de error.
         			err_login();
         		}
-        		
-        	}
-        													});
+        	
+        	
+        	
+        	}});
         
         View.OnClickListener registroListener1 = new View.OnClickListener(){
             @Override
@@ -108,15 +108,17 @@ public class MainActivity extends Activity {
         };
         olvido.setOnClickListener(registroListener1);
 	}
-	   //vibra y muestra un Toast
+	
+    
+    
+	 //vibra y muestra un Toast
     public void err_login(){
     	//Vibrator vibrator =(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 	    //vibrator.vibrate(200);
-	    Toast toast1 = Toast.makeText(getApplicationContext(),"Nombre de usuario o password incorrectos", Toast.LENGTH_SHORT);
+	    Toast toast1 = Toast.makeText(getApplicationContext(),"Error: Nombre de usuario o password incorrectos", Toast.LENGTH_SHORT);
  	    toast1.show();    	
     }
-    
-    
+		
     /*Valida el estado del logueo solamente necesita como parametros el usuario y passw*/
     public boolean loginstatus(String username ,String password ) {
     	int logstatus=-1;
@@ -136,7 +138,7 @@ public class MainActivity extends Activity {
       		 * observar el progressdialog
       		 * la podemos eliminar si queremos
       		 */
-		    SystemClock.sleep(650);
+		    SystemClock.sleep(950);
 		    		
 		    //si lo que obtuvimos no es null
 		    	if (jdata!=null && jdata.length() > 0){
@@ -227,9 +229,13 @@ public class MainActivity extends Activity {
            
            if (result.equals("ok")){
 
-				Intent i=new Intent(MainActivity.this, Evaluacion.class);
+				/*Intent i=new Intent(MainActivity.this, Evaluacion.class);
 				i.putExtra("user",user);
-				startActivity(i); 
+				startActivity(i);*/ 
+        	   Intent intent =new Intent (MainActivity.this, Evaluacion.class);
+  			// intent.putExtra("alumno", perfil.id);
+  			   intent.putExtra("user", user);
+               startActivity(intent);
 				
             }else{
             	err_login();
