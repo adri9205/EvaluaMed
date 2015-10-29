@@ -4,24 +4,65 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class Evaluacion_Alumno extends Activity {
-
+	String user;
+	String ID;
+	Double promedio;
+	String titulo[]={"Jucio Clínico", "Aplicación conocimiento médico",
+			"Aplicación de habilidades clínicas-Interrogatorio",
+			"Aplicación de habilidades clínicas-Exploración Física", 
+			"Aplicación de habilidades clínicas-Expediente Clínico", 
+			"Aplicación de habilidades clínicas-Comportamiento Quirúrgico", 
+			"Comunicación efectiva", "Desempeño en Sistema de salud", 
+			"Desarrollo Personal", "Impresión General del alumno"};
+	String descripcion[]={"Capaz de reaccionar a la aplicación clínica que se le presenta con su conocimiento médico.\n Conoce los métodos diagnósticos y tratamiento al nivel del curso",
+			"Actualizado, extenso, organizado, adecuado al nivel del curso", "Bien, digido, lógico y completo",
+			"Completa organizada, bien dirigida", "Expediente clínico ordenado, bien integrado, da seguimiento al paciente",
+			"Conoce al paciente, sus diagnósticos, su anatomía, técnica quirurgica y potenciales complicaciones",
+			"Tiene una comunicación efectiva con el paciente y su familia, excelente comunicación oral, escrita y telefónica",
+			"Demuestra respeto,compasión, empatía con el paciente y con su familia. Busca el mayor beneficio del paciente, respeta a otros alumnos, residentes, profesores y personal de salud"
+			,"Siempre llega a tiempo, cuida su apariencia, demuestra interés por aprender. Reconoce debilidades y fortalezas. Cumple siempre con sus compromisos. Busca la excelencia."};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_evaluacion__alumno);
 		ListView preguntas=(ListView) findViewById(R.id.list2);
+		Button sig=(Button) findViewById(R.id.button1);
 		Calendar c = Calendar.getInstance();
 		//System.out.println("Current time => " + c.getTime());
 
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		String formattedDate = df.format(c.getTime());
-		//System.out.println("Current time2 => " + formattedDate);
+		Bundle extras = getIntent().getExtras();
+        //Obtenemos datos enviados en el intent.
+        if (extras != null) {
+     	   user  = extras.getString("user");//usuario
+     	   ID = extras.getString("ID");
+        }else{
+     	   user="error";
+     	   }
+
+        View.OnClickListener registroListener1 = new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                    Intent intent =new Intent (Evaluacion_Alumno.this, ComentariosActivity.class);
+                    intent.putExtra("ID", ID);
+       			    intent.putExtra("user", user);
+       			    intent.putExtra("promedio", promedio);
+                    startActivity(intent);
+            }
+
+        };
+        sig.setOnClickListener(registroListener1);
+		//System.out.println("ID => " + ID +" "+user);
 	}
 
 	@Override

@@ -8,16 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.evaluamed.Fin" >
 
- 
-    <Button
-        android:id="@+id/BtnVolver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="130dp"
-        android:text="Volver a evaluar" />
-
     <Button
         android:id="@+id/BtnSalir"
         android:layout_width="wrap_content"
@@ -28,6 +18,22 @@
         android:layout_marginTop="36dp"
         android:text="Salir" />
 
+    <Button
+        android:id="@+id/BtnVolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Volver a evaluar" />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BtnSalir"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:text="Gracias por su evaluación"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

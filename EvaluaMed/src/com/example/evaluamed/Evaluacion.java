@@ -37,6 +37,7 @@ public class Evaluacion extends Activity {
 	Libro libro;
 	ListView alumnos;
 	List<Libro> listLibros= new ArrayList<Libro>();
+	String user;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,6 +47,14 @@ public class Evaluacion extends Activity {
 		alumnos=(ListView) findViewById(R.id.list1);
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        Bundle extras = getIntent().getExtras();
+        //Obtenemos datos enviados en el intent.
+        if (extras != null) {
+     	   user  = extras.getString("user");//usuario
+        }else{
+     	   user="error";
+     	   }
+        System.out.println("usuario: "+user);
         miAdaptador= new ListViewAdapter(getApplicationContext(), R.layout.row1,getDataForListView());
 	
 	alumnos.setAdapter(miAdaptador);
@@ -75,21 +84,7 @@ public class Evaluacion extends Activity {
 		    	miAdaptador= new ListViewAdapter(getApplicationContext(),R.layout.row1,listtemp);
 		    	
 		    	alumnos.setAdapter(miAdaptador);
-		    //Evaluacion.this.miAdaptador.getFilter().filter(s);
-			   /* @Override
-    public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-           int textlength = cs.length();
-           ArrayList<ContactStock> tempArrayList = new ArrayList<ContactStock>();
-           for(ContactStock c: arraylist){
-              if (textlength <= c.getName().length()) {
-                 if (c.getName().toLowerCase().contains(cs.toString().toLowerCase())) {
-                    tempArrayList.add(c);
-                 }
-              }
-           }
-           mAdapter = new ContactListAdapter(activity, tempArrayList);
-           lv.setAdapter(mAdapter);
-     }*/
+		    
 		    
 		   }
 		   
@@ -116,6 +111,7 @@ public class Evaluacion extends Activity {
 			Toast.makeText(Evaluacion.this,perfil.id, Toast.LENGTH_LONG).show();
 			 Intent intent =new Intent (Evaluacion.this, Evaluacion_Alumno.class);
 			 intent.putExtra("ID", perfil.id);
+			 intent.putExtra("user", user);
              startActivity(intent);
 			// TODO Auto-generated method stub
 			

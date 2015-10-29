@@ -29,7 +29,7 @@ public final class R {
         public static final int BtnOlvido=0x7f08000b;
         public static final int BtnRecuperar=0x7f08000c;
         public static final int BtnSalir=0x7f080005;
-        public static final int BtnVolver=0x7f080004;
+        public static final int BtnVolver=0x7f080006;
         public static final int Btn_10=0x7f080020;
         public static final int Btn_4=0x7f080010;
         public static final int Btn_5=0x7f080012;
@@ -41,13 +41,14 @@ public final class R {
         public static final int Btn_9_5=0x7f08001e;
         public static final int Btn_no_aplica=0x7f080021;
         public static final int LinearLayout1=0x7f08000d;
-        public static final int action_settings=0x7f080022;
-        public static final int button1=0x7f080006;
+        public static final int action_settings=0x7f080023;
+        public static final int button1=0x7f080004;
         public static final int editText1=0x7f080009;
         public static final int editText2=0x7f080008;
         public static final int imageView1=0x7f080007;
         public static final int list1=0x7f080000;
         public static final int list2=0x7f080003;
+        public static final int numberPicker1=0x7f080022;
         public static final int searchView1=0x7f080001;
         public static final int textView1=0x7f080002;
         public static final int textView10=0x7f08001f;
@@ -67,21 +68,25 @@ public final class R {
         public static final int activity_fin=0x7f030002;
         public static final int activity_main=0x7f030003;
         public static final int activity_olvido=0x7f030004;
-        public static final int row=0x7f030005;
-        public static final int row1=0x7f030006;
-        public static final int rowsearch=0x7f030007;
+        public static final int comentarios=0x7f030005;
+        public static final int row=0x7f030006;
+        public static final int row1=0x7f030007;
+        public static final int rowevaluacion=0x7f030008;
+        public static final int rowsearch=0x7f030009;
     }
     public static final class menu {
-        public static final int evaluacion=0x7f070000;
-        public static final int evaluacion__alumno=0x7f070001;
-        public static final int fin=0x7f070002;
-        public static final int main=0x7f070003;
-        public static final int olvido=0x7f070004;
+        public static final int comentarios=0x7f070000;
+        public static final int evaluacion=0x7f070001;
+        public static final int evaluacion__alumno=0x7f070002;
+        public static final int fin=0x7f070003;
+        public static final int main=0x7f070004;
+        public static final int olvido=0x7f070005;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050001;
+        public static final int title_activity_comentarios=0x7f050007;
         public static final int title_activity_evaluacion=0x7f050003;
         public static final int title_activity_evaluacion__alumno=0x7f050004;
         public static final int title_activity_fin=0x7f050006;

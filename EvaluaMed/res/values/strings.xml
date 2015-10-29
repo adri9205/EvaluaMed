@@ -8,5 +8,6 @@
     <string name="title_activity_evaluacion__alumno">Evaluacion_Alumno</string>
     <string name="title_activity_olvido">Olvido</string>
     <string name="title_activity_fin">Fin</string>
+    <string name="title_activity_comentarios">MainActivity</string>
 
 </resources>
