@@ -14,7 +14,7 @@ header('Content-type: application/json');
             // el usuario existe 
 
 $sql=mysql_query("select password from evaluadores where id_evaluadores = '$username'");  
-  
+  //prueba de email
   while($row=mysql_fetch_assoc($sql))
   $output[]=$row;
   json_encode($output);
