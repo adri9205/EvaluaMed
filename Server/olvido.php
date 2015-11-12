@@ -13,10 +13,10 @@ $db = new funciones_BD();
 	
 		
 $to = $usuario;
-$subject = "Olvido de contraseña11";
+$subject = "Olvido de contraseña";
 $txt = "Lo sentimos, tu usuario no existe. Solicita ayuda al administrador. ";
-$headers = "From: adri925@hotmail.com" . "\r\n" .
-"CC: adri925@hotmail.com";
+$headers = "From: mensajes@evaluacionqx.com" . "\r\n" .
+"CC: mensajes@evaluacionqx.com";
 mail($to,$subject, $txt);
 
 	$resultado[]=array("logstatus"=>"0");
@@ -24,17 +24,22 @@ mail($to,$subject, $txt);
 	}else{
 $sql=mysql_query("select password from evaluadores where id_evaluadores = '$usuario'");  
   
-  while($row=mysql_fetch_assoc($sql))
+  while($row=mysql_fetch_assoc($sql)){
   $output[]=$row;
   json_encode($output);
+  
+  $body .= " \n " ."Has solicitado tu contraseña"." \n "." \n " ."Password : ".$row['password']." \n "; 
+
+
+  
+  }
 
   	$to = $usuario;
-$subject = "Olvido de contraseña11";
-$txt = "Tu password es: ";
-$txt .= json_encode($output);
-$headers = "From: adri925@hotmail.com" . "\r\n" .
-"CC: adri925@hotmail.com";
-mail($to,$subject, $txt);
+$subject = "Olvido de contraseña";
+//$txt = "Tu password es: ".$row["password"];
+$headers = "From: mensajes@evaluacionqx.com" . "\r\n" .
+"CC: mensajes@evaluacionqx.com";
+mail($to,$subject, $body);
 	$resultado[]=array("logstatus"=>"1");
 	}
 

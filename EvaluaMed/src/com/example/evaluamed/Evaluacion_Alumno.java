@@ -1,8 +1,9 @@
 package com.example.evaluamed;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-
+import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,13 +24,20 @@ public class Evaluacion_Alumno extends Activity {
 			"Aplicación de habilidades clínicas-Comportamiento Quirúrgico", 
 			"Comunicación efectiva", "Desempeño en Sistema de salud", 
 			"Desarrollo Personal", "Impresión General del alumno"};
-	String descripcion[]={"Capaz de reaccionar a la aplicación clínica que se le presenta con su conocimiento médico.\n Conoce los métodos diagnósticos y tratamiento al nivel del curso",
-			"Actualizado, extenso, organizado, adecuado al nivel del curso", "Bien, digido, lógico y completo",
-			"Completa organizada, bien dirigida", "Expediente clínico ordenado, bien integrado, da seguimiento al paciente",
+	String descripcion[]={
+			"Capaz de reaccionar a la aplicación clínica que se le presenta con su conocimiento médico.\n Conoce los métodos diagnósticos y tratamiento al nivel del curso",
+			"Actualizado, extenso, organizado, adecuado al nivel del curso", 
+			"Bien, digido, lógico y completo",
+			"Completa organizada, bien dirigida", 
+			"Expediente clínico ordenado, bien integrado, da seguimiento al paciente",
 			"Conoce al paciente, sus diagnósticos, su anatomía, técnica quirurgica y potenciales complicaciones",
 			"Tiene una comunicación efectiva con el paciente y su familia, excelente comunicación oral, escrita y telefónica",
-			"Demuestra respeto,compasión, empatía con el paciente y con su familia. Busca el mayor beneficio del paciente, respeta a otros alumnos, residentes, profesores y personal de salud"
-			,"Siempre llega a tiempo, cuida su apariencia, demuestra interés por aprender. Reconoce debilidades y fortalezas. Cumple siempre con sus compromisos. Busca la excelencia."};
+			"Demuestra respeto,compasión, empatía con el paciente y con su familia. Busca el mayor beneficio del paciente, respeta a otros alumnos, residentes, profesores y personal de salud",
+			"Siempre llega a tiempo, cuida su apariencia, demuestra interés por aprender. Reconoce debilidades y fortalezas. Cumple siempre con sus compromisos. Busca la excelencia."
+			," "};
+    
+   double suma=0;
+   Integer n=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,10 +57,35 @@ public class Evaluacion_Alumno extends Activity {
         }else{
      	   user="error";
      	   }
-
+        final ArrayList<String> list = new ArrayList<String>();
+        final ArrayList<String> list1 = new ArrayList<String>();
+	    final ArrayList<Double> list2 = new ArrayList<Double>();
+	    for (int i=0; i<titulo.length; i++){
+	    	list.add(titulo[i]);
+	    	list1.add(descripcion[i]);
+	    	list2.add(0.0);
+	    	//list1.add(descripcion[i]);
+	    	//list2.add(0.0);
+	    }
+	  //instantiate custom adapter
+	    MyCustomAdapter adapter = new MyCustomAdapter(list,list1,list2, this);
+	    ListView lView = (ListView)findViewById(R.id.list2);
+	    lView.setAdapter(adapter);
+	   
         View.OnClickListener registroListener1 = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+            		for (int i=0; i<list2.size(); i++){
+            			if (list2.get(i)!=0){
+            				n+=1;
+            				suma+=list2.get(i);
+            			}
+            			
+            		}
+            		System.out.println(suma);
+            		System.out.println(n);
+            		promedio= (suma/n)*10;
+            		System.out.println(promedio);
                     Intent intent =new Intent (Evaluacion_Alumno.this, ComentariosActivity.class);
                     intent.putExtra("ID", ID);
        			    intent.putExtra("user", user);

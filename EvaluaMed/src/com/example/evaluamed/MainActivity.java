@@ -1,39 +1,28 @@
 package com.example.evaluamed;
 
 
+import java.util.ArrayList;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.ArrayList;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import com.example.evaluamed.library.Httppostaux;
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.os.Vibrator;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.evaluamed.library.Httppostaux;
@@ -57,7 +46,8 @@ public class MainActivity extends Activity {
 		user= (EditText) findViewById(R.id.editText1);
 		pass= (EditText) findViewById(R.id.editText2);
 		post=new Httppostaux();
-
+		ImageView im=(ImageView)findViewById(R.id.imageView1);
+	
 		login.getBackground().setColorFilter(0xff0000ff, PorterDuff.Mode.ADD);
 		
 		login.setTextColor(0xffffffff);

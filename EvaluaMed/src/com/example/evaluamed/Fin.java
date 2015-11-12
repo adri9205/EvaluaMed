@@ -38,6 +38,7 @@ public class Fin extends Activity {
             @Override
             public void onClick(View v) {
                     Intent intent =new Intent (Fin.this, Evaluacion.class);
+                    intent.putExtra("user", user);
                     startActivity(intent);
             }
 
