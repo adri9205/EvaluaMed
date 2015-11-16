@@ -8,12 +8,21 @@ $ID = $_POST['ID'];
 $promedio = $_POST['promedio'];
 $fecha = $_POST['fecha'];
 $comentarios = $_POST['comentarios'];
+$juicio = $_POST['juicio'];
+$conocimiento = $_POST['conocimiento'];
+$interrogatorio = $_POST['interrogatorio'];
+$fisico = $_POST['fisico'];
+$clinico = $_POST['clinico'];
+$quirurgico = $_POST['quirurgico'];
+$comunicacion = $_POST['comunicacion'];
+$desempeno = $_POST['desempeno'];
+$desarrollo = $_POST['desarrollo'];
 //echo($comentarios);
 
 require_once 'funciones.php';
 $db = new funciones_BD();
 
-	if($db->insert($usuario,$ID, $promedio, $fecha)){
+	if($db->insert($usuario,$ID, $promedio, $fecha, $comentarios, $juicio, $conocimiento, $interrogatorio, $fisico, $clinico, $quirurgico, $comunicacion, $desempeno, $desarrollo)){
 
 	$resultado[]=array("logstatus"=>"0");
 	

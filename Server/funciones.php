@@ -23,9 +23,9 @@ class funciones_BD {
     /**
      * agregar nuevo usuario
      */
-    public function insert($usuario,$ID, $promedio, $fecha) {
+    public function insert($usuario,$ID, $promedio, $fecha, $comentarios, $juicio, $conocimiento, $interrogatorio, $fisico, $clinico, $quirurgico, $comunicacion, $desempeno, $desarrollo) {
 
-    $result = mysql_query("INSERT INTO rubrica(id_alumno, id_evaluador, fecha, promedio) VALUES('$ID', '$usuario','$fecha','$promedio')");
+    $result = mysql_query("INSERT INTO rubrica(id_alumno, id_evaluador, fecha, promedio, juicio_clinico, conocimiento_medico, interrogatorio, exploracion_fisica, expediente_clinico, comportamiento_quirurgico, comunicacion, desempeno, desarrollo, comentarios) VALUES('$ID', '$usuario','$fecha','$promedio', '$juicio', '$conocimiento', '$interrogatorio', '$fisica', '$clinico', '$quirurgico', '$comunicacion', '$desempeno', '$desarrollo', '$comentarios')");
         // check for successful store
 
         if ($result) {
