@@ -54,13 +54,13 @@ public View getView(final int position, View convertView, ViewGroup parent) {
     //Handle TextView and display string from your list
     TextView listItemText = (TextView)view.findViewById(R.id.textView1); 
     listItemText.setText(list.get(position)); 
-    TextView listItemText1 = (TextView)view.findViewById(R.id.textView2); 
-    listItemText1.setText(list1.get(position)); 
+    //TextView listItemText1 = (TextView)view.findViewById(R.id.textView2); 
+    //listItemText1.setText(list1.get(position)); 
     
 
     //Handle buttons and add onClickListeners
-    Button btn4 = (Button)view.findViewById(R.id.Btn_4);
-    Button btn5 = (Button)view.findViewById(R.id.Btn_5);
+   // Button btn4 = (Button)view.findViewById(R.id.Btn_4);
+   // Button btn5 = (Button)view.findViewById(R.id.Btn_5);
     Button btn6 = (Button)view.findViewById(R.id.Btn_6);
     Button btn7 = (Button)view.findViewById(R.id.Btn_7);
     Button btn7_5 = (Button)view.findViewById(R.id.Btn_7_5);
@@ -68,27 +68,27 @@ public View getView(final int position, View convertView, ViewGroup parent) {
     Button btn9 = (Button)view.findViewById(R.id.Btn_9);
     Button btn9_5 = (Button)view.findViewById(R.id.Btn_9_5);
     Button btn10 = (Button)view.findViewById(R.id.Btn_10);
-    Button NA = (Button)view.findViewById(R.id.Btn_no_aplica);
-      btn4.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View v) { 
+   // Button NA = (Button)view.findViewById(R.id.Btn_no_aplica);
+     // btn4.setOnClickListener(new View.OnClickListener(){
+       // @Override
+       // public void onClick(View v) { 
             //do something
         
-        	list2.set(position, 4.0);
+      //  	list2.set(position, 4.0);
         	
-            notifyDataSetChanged();
-        }
-    });
+       //     notifyDataSetChanged();
+       // }
+   // });
       
-      btn5.setOnClickListener(new View.OnClickListener(){
-          @Override
-          public void onClick(View v) { 
+     // btn5.setOnClickListener(new View.OnClickListener(){
+         // @Override
+       //   public void onClick(View v) { 
               //do something
           
-          	list2.set(position, 5.0);
-              notifyDataSetChanged();
-          }
-      });
+          	//list2.set(position, 5.0);
+              //notifyDataSetChanged();
+         // }
+      //});
       btn6.setOnClickListener(new View.OnClickListener(){
           @Override
           public void onClick(View v) { 
@@ -160,7 +160,7 @@ public View getView(final int position, View convertView, ViewGroup parent) {
               notifyDataSetChanged();
           }
       });
-      NA.setOnClickListener(new View.OnClickListener(){
+  /*    NA.setOnClickListener(new View.OnClickListener(){
           @Override
           public void onClick(View v) { 
               //do something
@@ -170,7 +170,7 @@ public View getView(final int position, View convertView, ViewGroup parent) {
               notifyDataSetChanged();
           }
       });
-
+*/
 
 
 

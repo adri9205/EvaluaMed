@@ -20,15 +20,16 @@ import org.apache.http.util.EntityUtils;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ComentariosActivity extends Activity {
 	EditText comments;
+	TextView calif;
     String comentarios;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,14 @@ public class ComentariosActivity extends Activity {
 		setContentView(R.layout.comentarios);
 		Button guardar=(Button) findViewById(R.id.button2);
 		comments = (EditText) findViewById(R.id.editText1);
+		calif = (TextView) findViewById(R.id.textView1);
+		
+		
 		final String user;
 		final String ID;
 		final Double promedio;
+		final Double juicio, conocimiento, interrogatorio, fisica, clinico, quirurgico,comunicacion, desempeno, desarrollo;
+
 		
 		Calendar c = Calendar.getInstance();
 		//System.out.println("Current time => " + c.getTime());
@@ -51,10 +57,32 @@ public class ComentariosActivity extends Activity {
      	   user  = extras.getString("user");//usuario
      	   ID = extras.getString("ID");
      	   promedio = extras.getDouble("promedio");
+     	   juicio = extras.getDouble("juicio");
+     	   conocimiento = extras.getDouble("conocimiento");
+     	   interrogatorio = extras.getDouble("interrogatorio");
+     	   fisica = extras.getDouble("fisica");
+     	   clinico = extras.getDouble("clinico");
+     	   quirurgico = extras.getDouble("quirurgico");
+     	   comunicacion = extras.getDouble("comunicacion");
+     	   desempeno = extras.getDouble("desempeno");
+     	   desarrollo = extras.getDouble("desarrollo");
+     	   
+     	   /*      			    
+     	    *        intent.putExtra("juicio", juicio);
+    			    intent.putExtra("conocimiento", conocimiento);
+    			    intent.putExtra("interrogatorio", interrogatorio);
+    			    intent.putExtra("fisica", fisica);
+       			    intent.putExtra("clinico", clinico);
+       			    intent.putExtra("quirurgico", quirurgico);
+       			    intent.putExtra("comunicacion", comunicacion);
+    			    intent.putExtra("desempeno", desempeno);
+    			    intent.putExtra("desarrollo", desarrollo);*/
        
         final String prom=Double.toString(promedio);
-        
-        
+        final String juicio1=Double.toString(juicio), conocimiento1=Double.toString(conocimiento), interrogatorio1=Double.toString(interrogatorio), fisica1=Double.toString(fisica), clinico1=Double.toString(clinico), quirurgico1=Double.toString(quirurgico),comunicacion1=Double.toString(comunicacion), desempeno1=Double.toString(desempeno), desarrollo1=Double.toString(desarrollo);
+
+        calif.setText("La impresión general del alumno para esta sesion fue: \n"+String.format( "%.1f", promedio ));
+
         View.OnClickListener registroListener1 = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -78,6 +106,20 @@ public class ComentariosActivity extends Activity {
                     nameValuePairs.add(new BasicNameValuePair("promedio", prom));
                     nameValuePairs.add(new BasicNameValuePair("fecha", formattedDate));
                     nameValuePairs.add(new BasicNameValuePair("comentarios",comentarios));
+                    //juicio, comunicacion, desempeno, desarrollo;
+                    
+                    nameValuePairs.add(new BasicNameValuePair("juicio", juicio1));
+                    nameValuePairs.add(new BasicNameValuePair("conocimiento", conocimiento1));
+                    nameValuePairs.add(new BasicNameValuePair("interrogatorio", interrogatorio1));
+                    nameValuePairs.add(new BasicNameValuePair("fisica", fisica1));
+                    nameValuePairs.add(new BasicNameValuePair("clinico",clinico1));
+                    
+
+                    nameValuePairs.add(new BasicNameValuePair("quirurgico", quirurgico1));
+                    nameValuePairs.add(new BasicNameValuePair("comunicacion", comunicacion1));
+                    nameValuePairs.add(new BasicNameValuePair("desempeno", desempeno1));
+                    nameValuePairs.add(new BasicNameValuePair("desarrollo", desarrollo1));
+                    //nameValuePairs.add(new BasicNameValuePair("clinico",clinico1));
                      
                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
              
@@ -98,8 +140,9 @@ public class ComentariosActivity extends Activity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                    Intent intent =new Intent (ComentariosActivity.this, Fin.class);
-                    /*intent.putExtra("user", user);*/
+                    Intent intent =new Intent (ComentariosActivity.this, Evaluacion.class);
+                    intent.putExtra("user", user);
+                   // intent.putExtra("promedio", prom);
                     startActivity(intent);
             }
 

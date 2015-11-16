@@ -6,9 +6,14 @@ import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +32,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -38,12 +44,14 @@ public class Evaluacion extends Activity {
 	ListView alumnos;
 	List<Libro> listLibros= new ArrayList<Libro>();
 	String user;
+	Button salir;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_evaluacion);
 		//SearchView busca=(SearchView) findViewById(R.id.searchView1);
 		EditText ed=(EditText)findViewById(R.id.searchView1);
+		salir = (Button)findViewById(R.id.button1);
 		alumnos=(ListView) findViewById(R.id.list1);
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -58,7 +66,17 @@ public class Evaluacion extends Activity {
         miAdaptador= new ListViewAdapter(getApplicationContext(), R.layout.row1,getDataForListView());
 	
 	alumnos.setAdapter(miAdaptador);
-	
+    View.OnClickListener registroListener1 = new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+                Intent intent =new Intent (Evaluacion.this, MainActivity.class);
+                //intent.putExtra("user", user);
+               // intent.putExtra("promedio", prom);
+                startActivity(intent);
+        }
+
+    };
+    salir.setOnClickListener(registroListener1);
 	  ed.addTextChangedListener(new TextWatcher() {
 		   
 		   @Override

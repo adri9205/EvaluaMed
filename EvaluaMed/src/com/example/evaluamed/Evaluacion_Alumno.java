@@ -4,26 +4,32 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class Evaluacion_Alumno extends Activity {
 	String user;
 	String ID;
 	Double promedio;
+	Double juicio, conocimiento, interrogatorio, fisica, clinico, quirurgico,comunicacion, desempeno, desarrollo;
 	String titulo[]={"Jucio Clínico", "Aplicación conocimiento médico",
 			"Aplicación de habilidades clínicas-Interrogatorio",
 			"Aplicación de habilidades clínicas-Exploración Física", 
 			"Aplicación de habilidades clínicas-Expediente Clínico", 
 			"Aplicación de habilidades clínicas-Comportamiento Quirúrgico", 
 			"Comunicación efectiva", "Desempeño en Sistema de salud", 
-			"Desarrollo Personal", "Impresión General del alumno"};
+			"Desarrollo Personal"};
 	String descripcion[]={
 			"Capaz de reaccionar a la aplicación clínica que se le presenta con su conocimiento médico.\n Conoce los métodos diagnósticos y tratamiento al nivel del curso",
 			"Actualizado, extenso, organizado, adecuado al nivel del curso", 
@@ -34,7 +40,7 @@ public class Evaluacion_Alumno extends Activity {
 			"Tiene una comunicación efectiva con el paciente y su familia, excelente comunicación oral, escrita y telefónica",
 			"Demuestra respeto,compasión, empatía con el paciente y con su familia. Busca el mayor beneficio del paciente, respeta a otros alumnos, residentes, profesores y personal de salud",
 			"Siempre llega a tiempo, cuida su apariencia, demuestra interés por aprender. Reconoce debilidades y fortalezas. Cumple siempre con sus compromisos. Busca la excelencia."
-			," "};
+			};
     
    double suma=0;
    Integer n=0;
@@ -71,6 +77,22 @@ public class Evaluacion_Alumno extends Activity {
 	    MyCustomAdapter adapter = new MyCustomAdapter(list,list1,list2, this);
 	    ListView lView = (ListView)findViewById(R.id.list2);
 	    lView.setAdapter(adapter);
+	    
+		
+		OnItemClickListener registro = new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+			//	Libro perfil=(Libro)miAdaptador.getItem(arg2);
+				Toast.makeText(Evaluacion_Alumno.this,descripcion[arg2], Toast.LENGTH_LONG).show();
+				
+				// TODO Auto-generated method stub
+				
+			}
+			
+		};
+		lView.setOnItemClickListener(registro);
 	   
         View.OnClickListener registroListener1 = new View.OnClickListener(){
             @Override
@@ -84,12 +106,37 @@ public class Evaluacion_Alumno extends Activity {
             		}
             		System.out.println(suma);
             		System.out.println(n);
-            		promedio= (suma/n)*10;
+            		promedio= (suma/n);
+            		//Double juicio, conocimiento, interrogatorio, 
+            		//fisica, clinico, quirurgico,comunicacion, desempeno, desarrollo;
+            		juicio=list2.get(0);
+            		conocimiento=list2.get(1);
+            		interrogatorio=list2.get(2);
+            		fisica=list2.get(3);
+            		clinico=list2.get(4);
+            		quirurgico=list2.get(5);
+            		comunicacion=list2.get(6);
+            		desempeno=list2.get(7);
+            		desarrollo=list2.get(8);
             		System.out.println(promedio);
                     Intent intent =new Intent (Evaluacion_Alumno.this, ComentariosActivity.class);
                     intent.putExtra("ID", ID);
        			    intent.putExtra("user", user);
        			    intent.putExtra("promedio", promedio);
+       			    intent.putExtra("juicio", juicio);
+    			    intent.putExtra("conocimiento", conocimiento);
+    			    intent.putExtra("interrogatorio", interrogatorio);
+    			    intent.putExtra("fisica", fisica);
+       			    intent.putExtra("clinico", clinico);
+       			    intent.putExtra("quirurgico", quirurgico);
+       			    intent.putExtra("comunicacion", comunicacion);
+    			    intent.putExtra("desempeno", desempeno);
+    			    intent.putExtra("desarrollo", desarrollo);
+    			    
+       			    
+    			    
+       			    
+       			    
                     startActivity(intent);
             }
 

@@ -8,23 +8,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Fin extends Activity {
-	String user;
+	String user, promedio;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fin);
 		Button evaluar=(Button) findViewById(R.id.BtnVolver);
 		Button salir=(Button) findViewById(R.id.BtnSalir);
+		TextView calif= (TextView) findViewById(R.id.textView2);
 		Bundle extras = getIntent().getExtras();
         //Obtenemos datos enviados en el intent.
         if (extras != null) {
      	   user  = extras.getString("user");//usuario
+     	   promedio = extras.getString("promedio");
+     	   
      	 
         }else{
      	   user="error";
      	   }
+        calif.setText("La impresión general del alumno para esta sesion fue: \n"+promedio);
 		View.OnClickListener registroListener = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
