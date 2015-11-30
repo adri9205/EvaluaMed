@@ -23,12 +23,12 @@ public class Evaluacion_Alumno extends Activity {
 	String ID;
 	Double promedio;
 	Double juicio, conocimiento, interrogatorio, fisica, clinico, quirurgico,comunicacion, desempeno, desarrollo;
-	String titulo[]={"Jucio Clínico", "Aplicación conocimiento médico",
-			"Aplicación de habilidades clínicas-Interrogatorio",
-			"Aplicación de habilidades clínicas-Exploración Física", 
-			"Aplicación de habilidades clínicas-Expediente Clínico", 
-			"Aplicación de habilidades clínicas-Comportamiento Quirúrgico", 
-			"Comunicación efectiva", "Desempeño en Sistema de salud", 
+	String titulo[]={"Jucio Clínico", "Conocimiento médico",
+			"Interrogatorio",
+			"Exploración Física", 
+			"Expediente Clínico", 
+			"Comportamiento Quirúrgico", 
+			"Comunicación efectiva", "Desempeño en Sistemas de salud", 
 			"Desarrollo Personal"};
 	String descripcion[]={
 			"Capaz de reaccionar a la aplicación clínica que se le presenta con su conocimiento médico.\n Conoce los métodos diagnósticos y tratamiento al nivel del curso",
@@ -78,21 +78,8 @@ public class Evaluacion_Alumno extends Activity {
 	    ListView lView = (ListView)findViewById(R.id.list2);
 	    lView.setAdapter(adapter);
 	    
-		
-		OnItemClickListener registro = new OnItemClickListener(){
+	    
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-			//	Libro perfil=(Libro)miAdaptador.getItem(arg2);
-				Toast.makeText(Evaluacion_Alumno.this,descripcion[arg2], Toast.LENGTH_LONG).show();
-				
-				// TODO Auto-generated method stub
-				
-			}
-			
-		};
-		lView.setOnItemClickListener(registro);
 	   
         View.OnClickListener registroListener1 = new View.OnClickListener(){
             @Override
@@ -106,7 +93,11 @@ public class Evaluacion_Alumno extends Activity {
             		}
             		System.out.println(suma);
             		System.out.println(n);
-            		promedio= (suma/n);
+            		if (suma!=0){
+            		promedio= (suma/n);}
+            		else{
+            			promedio = 0.0;
+            		}
             		//Double juicio, conocimiento, interrogatorio, 
             		//fisica, clinico, quirurgico,comunicacion, desempeno, desarrollo;
             		juicio=list2.get(0);

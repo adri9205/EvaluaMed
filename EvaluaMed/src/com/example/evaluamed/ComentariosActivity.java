@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ComentariosActivity extends Activity {
 	EditText comments;
@@ -80,13 +81,17 @@ public class ComentariosActivity extends Activity {
        
         final String prom=Double.toString(promedio);
         final String juicio1=Double.toString(juicio), conocimiento1=Double.toString(conocimiento), interrogatorio1=Double.toString(interrogatorio), fisica1=Double.toString(fisica), clinico1=Double.toString(clinico), quirurgico1=Double.toString(quirurgico),comunicacion1=Double.toString(comunicacion), desempeno1=Double.toString(desempeno), desarrollo1=Double.toString(desarrollo);
-
+        if (promedio!=0.0){
         calif.setText("La impresión general del alumno para esta sesion fue: \n"+String.format( "%.1f", promedio ));
-
+        }
+        else{
+        	calif.setText("No se evaluó esta sesión");
+        }
         View.OnClickListener registroListener1 = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
             	comentarios=comments.getText().toString();
+            	if (promedio!=0){
             	try{
             		
                     // url where the data will be posted
@@ -139,7 +144,10 @@ public class ComentariosActivity extends Activity {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }}
+            	else {
+            		Toast.makeText(ComentariosActivity.this, "No se guardo la evaluacion", Toast.LENGTH_LONG);
+            	}
                     Intent intent =new Intent (ComentariosActivity.this, Evaluacion.class);
                     intent.putExtra("user", user);
                    // intent.putExtra("promedio", prom);

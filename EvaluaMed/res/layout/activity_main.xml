@@ -28,16 +28,6 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="48dp"
-        android:ems="10"
-        android:hint="Username" />
-
     <Button
         android:id="@+id/BtnLoggin"
         
@@ -56,5 +46,18 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:text="Olvido Contraseña" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText2"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Username" >
+
+        <requestFocus />
+    </EditText>
 
 </RelativeLayout>

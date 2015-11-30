@@ -3,13 +3,16 @@ package com.example.evaluamed;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter { 
 private ArrayList<String> list = new ArrayList<String>(); 
@@ -49,46 +52,20 @@ public View getView(final int position, View convertView, ViewGroup parent) {
     if (view == null) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
         view = inflater.inflate(R.layout.row, null);
+        
     } 
 
     //Handle TextView and display string from your list
     TextView listItemText = (TextView)view.findViewById(R.id.textView1); 
     listItemText.setText(list.get(position)); 
-    //TextView listItemText1 = (TextView)view.findViewById(R.id.textView2); 
-    //listItemText1.setText(list1.get(position)); 
-    
-
-    //Handle buttons and add onClickListeners
-   // Button btn4 = (Button)view.findViewById(R.id.Btn_4);
-   // Button btn5 = (Button)view.findViewById(R.id.Btn_5);
-    Button btn6 = (Button)view.findViewById(R.id.Btn_6);
-    Button btn7 = (Button)view.findViewById(R.id.Btn_7);
-    Button btn7_5 = (Button)view.findViewById(R.id.Btn_7_5);
-    Button btn8 = (Button)view.findViewById(R.id.Btn_8);
-    Button btn9 = (Button)view.findViewById(R.id.Btn_9);
-    Button btn9_5 = (Button)view.findViewById(R.id.Btn_9_5);
-    Button btn10 = (Button)view.findViewById(R.id.Btn_10);
-   // Button NA = (Button)view.findViewById(R.id.Btn_no_aplica);
-     // btn4.setOnClickListener(new View.OnClickListener(){
-       // @Override
-       // public void onClick(View v) { 
-            //do something
-        
-      //  	list2.set(position, 4.0);
-        	
-       //     notifyDataSetChanged();
-       // }
-   // });
-      
-     // btn5.setOnClickListener(new View.OnClickListener(){
-         // @Override
-       //   public void onClick(View v) { 
-              //do something
-          
-          	//list2.set(position, 5.0);
-              //notifyDataSetChanged();
-         // }
-      //});
+    ImageButton btninfo = (ImageButton) view.findViewById(R.id.button1);
+    final Button btn6 = (Button)view.findViewById(R.id.Btn_6);
+    final Button btn7 = (Button)view.findViewById(R.id.Btn_7);
+    final Button btn7_5 = (Button)view.findViewById(R.id.Btn_7_5);
+    final Button btn8 = (Button)view.findViewById(R.id.Btn_8);
+    final Button btn9 = (Button)view.findViewById(R.id.Btn_9);
+    final Button btn9_5 = (Button)view.findViewById(R.id.Btn_9_5);
+    final Button btn10 = (Button)view.findViewById(R.id.Btn_10);
       btn6.setOnClickListener(new View.OnClickListener(){
           @Override
           public void onClick(View v) { 
@@ -105,7 +82,6 @@ public View getView(final int position, View convertView, ViewGroup parent) {
               //do something
           
           	list2.set(position, 7.0);
-          	
               notifyDataSetChanged();
           }
       });
@@ -115,7 +91,6 @@ public View getView(final int position, View convertView, ViewGroup parent) {
               //do something
           
           	list2.set(position, 7.5);
-          	
               notifyDataSetChanged();
           }
       });
@@ -126,7 +101,6 @@ public View getView(final int position, View convertView, ViewGroup parent) {
               //do something
           
           	list2.set(position, 8.0);
-          	
               notifyDataSetChanged();
           }
       });
@@ -136,7 +110,6 @@ public View getView(final int position, View convertView, ViewGroup parent) {
               //do something
           
           	list2.set(position, 9.0);
-          	
               notifyDataSetChanged();
           }
       });
@@ -146,7 +119,6 @@ public View getView(final int position, View convertView, ViewGroup parent) {
               //do something
           
           	list2.set(position, 9.5);
-          	
               notifyDataSetChanged();
           }
       });
@@ -156,21 +128,80 @@ public View getView(final int position, View convertView, ViewGroup parent) {
               //do something
           
           	list2.set(position, 10.0);
-          	
+         
               notifyDataSetChanged();
           }
       });
-  /*    NA.setOnClickListener(new View.OnClickListener(){
+     btninfo.setOnClickListener(new View.OnClickListener(){
           @Override
           public void onClick(View v) { 
               //do something
-          
-          	list2.set(position, 0.0);
-          	
-              notifyDataSetChanged();
+        	  Toast.makeText(context, list1.get(position), Toast.LENGTH_LONG).show();
           }
       });
-*/
+     if (list2.get(position)==6.0){
+    		btn6.setBackgroundColor(Color.BLUE);
+    	  	btn6.setTextColor(Color.WHITE);
+    	  	
+    	}
+    	else{
+    	   	btn6.setBackgroundResource(android.R.drawable.btn_default);
+          	btn6.setTextColor(Color.BLACK);    	  	
+    	}
+     if (list2.get(position)==7.0){
+ 		btn7.setBackgroundColor(Color.BLUE);
+ 	  	btn7.setTextColor(Color.WHITE);
+ 	  	
+ 	}
+ 	else{
+ 	   	btn7.setBackgroundResource(android.R.drawable.btn_default);
+       	btn7.setTextColor(Color.BLACK);    	  	
+ 	}
+     if (list2.get(position)==7.5){
+ 		btn7_5.setBackgroundColor(Color.BLUE);
+ 	  	btn7_5.setTextColor(Color.WHITE);
+ 	  	
+ 	}
+ 	else{
+ 	   	btn7_5.setBackgroundResource(android.R.drawable.btn_default);
+       	btn7_5.setTextColor(Color.BLACK);    	  	
+ 	}
+     if (list2.get(position)==8.0){
+ 		btn8.setBackgroundColor(Color.BLUE);
+ 	  	btn8.setTextColor(Color.WHITE);
+ 	  	
+ 	}
+ 	else{
+ 	   	btn8.setBackgroundResource(android.R.drawable.btn_default);
+       	btn8.setTextColor(Color.BLACK);    	  	
+ 	}
+     if (list2.get(position)==9.0){
+ 		btn9.setBackgroundColor(Color.BLUE);
+ 	  	btn9.setTextColor(Color.WHITE);
+ 	  	
+ 	}
+ 	else{
+ 	   	btn9.setBackgroundResource(android.R.drawable.btn_default);
+       	btn9.setTextColor(Color.BLACK);    	  	
+ 	}
+     if (list2.get(position)==9.5){
+ 		btn9_5.setBackgroundColor(Color.BLUE);
+ 	  	btn9_5.setTextColor(Color.WHITE);
+ 	  	
+ 	}
+ 	else{
+ 	   	btn9_5.setBackgroundResource(android.R.drawable.btn_default);
+       	btn9_5.setTextColor(Color.BLACK);    	  	
+ 	}
+     if (list2.get(position)==10.0){
+ 		btn10.setBackgroundColor(Color.BLUE);
+ 	  	btn10.setTextColor(Color.WHITE);
+ 	  	
+ 	}
+ 	else{
+ 	   	btn10.setBackgroundResource(android.R.drawable.btn_default);
+       	btn10.setTextColor(Color.BLACK);    	  	
+ 	}
 
 
 

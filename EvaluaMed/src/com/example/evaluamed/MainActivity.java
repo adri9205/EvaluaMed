@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -47,23 +48,12 @@ public class MainActivity extends Activity {
 		pass= (EditText) findViewById(R.id.editText2);
 		post=new Httppostaux();
 		ImageView im=(ImageView)findViewById(R.id.imageView1);
-	
-		login.getBackground().setColorFilter(0xff0000ff, PorterDuff.Mode.ADD);
-		
-		login.setTextColor(0xffffffff);
-		login.invalidate();
-		olvido.getBackground().setColorFilter(0xff0000ff, PorterDuff.Mode.ADD);
-		olvido.setTextColor(0xffffffff);
-		olvido.invalidate();
-		/*View.OnClickListener registroListener = new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                    Intent intent =new Intent (MainActivity.this, Evaluacion.class);
-                    startActivity(intent);
-            }
-
-        };
-        login.setOnClickListener(registroListener);*/
+		login.setBackgroundColor(Color.BLUE);
+      	login.setTextColor(Color.WHITE);
+      	login.invalidate();
+      	olvido.setBackgroundColor(Color.BLUE);
+      	olvido.setTextColor(Color.WHITE);
+      	olvido.invalidate();
 		login.setOnClickListener(new View.OnClickListener(){
        
         	public void onClick(View view){
@@ -128,7 +118,7 @@ public class MainActivity extends Activity {
       		 * observar el progressdialog
       		 * la podemos eliminar si queremos
       		 */
-		    SystemClock.sleep(950);
+		    SystemClock.sleep(250);
 		    		
 		    //si lo que obtuvimos no es null
 		    	if (jdata!=null && jdata.length() > 0){

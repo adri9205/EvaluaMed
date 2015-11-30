@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -43,6 +44,8 @@ public class Olvido extends Activity {
 		setContentView(R.layout.activity_olvido);
 		email=(EditText) findViewById(R.id.editText1);
 		Button enviar=(Button) findViewById(R.id.BtnRecuperar);
+		enviar.setBackgroundColor(Color.BLUE);
+		enviar.setTextColor(Color.WHITE);
 		post=new Httppostaux();
 		enviar.setOnClickListener(new View.OnClickListener(){
 		       
@@ -90,7 +93,7 @@ public class Olvido extends Activity {
      		 * observar el progressdialog
      		 * la podemos eliminar si queremos
      		 */
-		    SystemClock.sleep(950);
+		    SystemClock.sleep(250);
 		    		
 		    //si lo que obtuvimos no es null
 		    	if (jdata!=null && jdata.length() > 0){
