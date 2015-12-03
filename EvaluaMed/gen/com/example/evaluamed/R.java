@@ -26,6 +26,8 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
         public static final int info=0x7f020002;
         public static final int infobutton=0x7f020003;
+        public static final int play=0x7f020004;
+        public static final int playstoreicon=0x7f020005;
     }
     public static final class id {
         public static final int BtnLoggin=0x7f08000b;
