@@ -34,7 +34,7 @@ $db = new funciones_BD();
 
 $subject = "Comentarios de tu evaluacion de ".$usuario;
 $to = $ID."@itesm.mx";
-$txt = "Los comentarios de tu evaluador son: ".$_POST['comentarios']."\n Tu calificacion fue de: ".$_POST['promedio'];
+$txt = "Los comentarios de tu evaluador son: ".$_POST['comentarios']."\n Tu calificacion para este evento fue de: ".$_POST['promedio'];
 //$headers = "From: mensajes@evaluacionqx.com" . "\r\n" .;
 mail($to,$subject, $txt);
 
@@ -45,7 +45,7 @@ if ($prom < 7.0 ){
   while($row=mysql_fetch_assoc($sql)){
   $output[]=$row;
 $to = $row['correo'];
-$txt = "El alumno con la matricula: ".$ID." obtuvo una calificacion de ".$promedio." los comentarios del evaluador ".$usuario." son: ".$comentarios;
+$txt = "El alumno con la matricula: ".$ID." obtuvo una calificacion de ".$promedio." para este evento. Los comentarios del evaluador ".$usuario." son: ".$comentarios;
 //$to = "adri925@hotmail.com";
 mail($to,$subject, $txt);
 }}

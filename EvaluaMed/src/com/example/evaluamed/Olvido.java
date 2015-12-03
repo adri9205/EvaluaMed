@@ -93,7 +93,7 @@ public class Olvido extends Activity {
      		 * observar el progressdialog
      		 * la podemos eliminar si queremos
      		 */
-		    SystemClock.sleep(250);
+		    SystemClock.sleep(100);
 		    		
 		    //si lo que obtuvimos no es null
 		    	if (jdata!=null && jdata.length() > 0){

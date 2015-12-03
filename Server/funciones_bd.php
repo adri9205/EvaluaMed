@@ -64,7 +64,7 @@ class funciones_BD {
    
 	public function login($user,$passw){
 
-	$result=mysql_query("SELECT COUNT(*) FROM evaluadores WHERE id_evaluadores='$user' AND password='$passw' "); 
+	$result=mysql_query("SELECT COUNT(*) FROM evaluadores WHERE id_evaluadores='$user' AND password='$passw' AND titular='1' "); 
 	$count = mysql_fetch_row($result);
     //$row=mysql_fetch_assoc($result);
     

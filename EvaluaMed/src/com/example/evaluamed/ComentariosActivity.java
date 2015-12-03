@@ -67,25 +67,13 @@ public class ComentariosActivity extends Activity {
      	   comunicacion = extras.getDouble("comunicacion");
      	   desempeno = extras.getDouble("desempeno");
      	   desarrollo = extras.getDouble("desarrollo");
-     	   
-     	   /*      			    
-     	    *        intent.putExtra("juicio", juicio);
-    			    intent.putExtra("conocimiento", conocimiento);
-    			    intent.putExtra("interrogatorio", interrogatorio);
-    			    intent.putExtra("fisica", fisica);
-       			    intent.putExtra("clinico", clinico);
-       			    intent.putExtra("quirurgico", quirurgico);
-       			    intent.putExtra("comunicacion", comunicacion);
-    			    intent.putExtra("desempeno", desempeno);
-    			    intent.putExtra("desarrollo", desarrollo);*/
-       
-        final String prom=Double.toString(promedio);
+     	 final String prom=Double.toString(promedio);
         final String juicio1=Double.toString(juicio), conocimiento1=Double.toString(conocimiento), interrogatorio1=Double.toString(interrogatorio), fisica1=Double.toString(fisica), clinico1=Double.toString(clinico), quirurgico1=Double.toString(quirurgico),comunicacion1=Double.toString(comunicacion), desempeno1=Double.toString(desempeno), desarrollo1=Double.toString(desarrollo);
         if (promedio!=0.0){
-        calif.setText("La impresión general del alumno para esta sesion fue: \n"+String.format( "%.1f", promedio ));
+        calif.setText("La impresión general del alumno para este evento fue: \n"+String.format( "%.1f", promedio ));
         }
         else{
-        	calif.setText("No se evaluó esta sesión");
+        	calif.setText("No se evaluó este evento");
         }
         View.OnClickListener registroListener1 = new View.OnClickListener(){
             @Override

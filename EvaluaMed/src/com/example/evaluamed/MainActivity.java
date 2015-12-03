@@ -95,7 +95,7 @@ public class MainActivity extends Activity {
     public void err_login(){
     	//Vibrator vibrator =(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 	    //vibrator.vibrate(200);
-	    Toast toast1 = Toast.makeText(getApplicationContext(),"Error: Nombre de usuario o password incorrectos", Toast.LENGTH_SHORT);
+	    Toast toast1 = Toast.makeText(getApplicationContext(),"Error: Nombre de usuario, password incorrecto o con estatus inactivo", Toast.LENGTH_SHORT);
  	    toast1.show();    	
     }
 		
@@ -118,7 +118,7 @@ public class MainActivity extends Activity {
       		 * observar el progressdialog
       		 * la podemos eliminar si queremos
       		 */
-		    SystemClock.sleep(250);
+		    SystemClock.sleep(100);
 		    		
 		    //si lo que obtuvimos no es null
 		    	if (jdata!=null && jdata.length() > 0){

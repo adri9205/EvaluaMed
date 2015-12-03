@@ -44,15 +44,38 @@ public class ListViewAdapter extends ArrayAdapter<Libro> {
 		titulo.setTextColor(Color.rgb(0,0,0));
 		//isbn.setTextColor(Color.rgb(0,0,0));
 		//fecha_publicacion.setTextColor(Color.rgb(0,0,0));
-		//year.setTextColor(Color.rgb(0,0,0));
+		//year.setTextColor(Color.rgb(0,0,0)); 
 		//especialidad.setTextColor(Color.rgb(0,0,0));
 		Libro libro=listaLibros.get(position);
-		titulo.setText(libro.getTitulo()+" "+libro.getIsbn()+" "+libro.getFecha_publicacion()+"\n"+libro.getEsp()+" "+libro.getYear());
+		titulo.setText(libro.getTitulo()+" "+libro.getIsbn()+" "+libro.getFecha_publicacion()+"\n"+libro.getEsp()+" R"+libro.getYear());
 		//isbn.setText(libro.getIsbn());
+		//if (libro.getYear()==5)
 		//fecha_publicacion.setText(libro.getFecha_publicacion());
 		//especialidad.setText(libro.getEsp());
 		//year.setText(libro.getYear());
 		
+		if (libro.getYear().equals("5")){
+			titulo.setBackgroundColor(Color.rgb(51, 102, 0));
+			titulo.setTextColor(Color.BLACK);
+		}
+		if (libro.getYear().equals("4")){
+			titulo.setBackgroundColor(Color.GREEN);
+			titulo.setTextColor(Color.BLACK);
+			
+		}
+		if (libro.getYear().equals("3")){
+			titulo.setBackgroundColor(Color.YELLOW);
+			titulo.setTextColor(Color.BLACK);
+		}
+		if (libro.getYear().equals("2")){
+			titulo.setBackgroundColor(Color.rgb(255, 128, 0));
+			titulo.setTextColor(Color.BLACK);
+			
+		}
+		 if (libro.getYear().equals("1")){
+			titulo.setBackgroundColor(Color.RED);
+			titulo.setTextColor(Color.BLACK);
+		}
 		//tv1.setBackgroundColor(0xFF12FF45);
         //tv1.setText("Background color from int color (0xFF12FF45)");
 		
